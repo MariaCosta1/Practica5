@@ -1,3 +1,0 @@
-https://github.com/MariaCosta1/Practica5
-
-Las páginas se encontraran siguiendo el siguiente directorio: demo>Target>Classes
