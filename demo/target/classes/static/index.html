@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <title>Biblioteca de películas</title>
+    <style>
+        header{
+            margin-top: 30px;
+            margin-left: 5%;
+            color:rgb(68,76,116)
+
+        }
+        body{
+            background-color:rgb(234,226,251);
+            
+        }
+        main{
+            margin-top:10%;
+            margin-left: 5%;
+        }
+        footer{
+            margin-top: 25%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a su biblioteca de películas</h1>
+        <hr>
+        <h3>Rellene el siguiente formulario para añadir una nueva película</h3>
+    </header>
+    <main>
+        <div class="row">
+            <div class="col-2">
+            </div>
+            <div class="col">
+                <form >
+                    <label>Título</label>
+                    <input type="text" id="inputTitle">
+                    <br>
+                    <br>
+                    <label>Director</label>
+                    <input type="text" id="inputDirector">
+                    <br>
+                    <br>
+                    <label for="">Año de estreno</label>
+                    <input type="number" id="inputYear">
+                    <br>
+
+                </form>
+                <button>
+                    Añadir
+                </button>
+            </div>
+
+        </div>
+        
+    </main>
+    <footer class="bg-light text-center text-white">
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2022 Copyright:
+        </div>
+        <!-- Copyright -->
+    </footer>
+    
+</body>
+<script>
+    const getMovieData = async () => {
+        let inputTitle = document.getElementById("inputTitle").value;
+        let inputDirector = document.getElementById("inputDirector").value;
+        let inputYear = document.getElementById("inputYear").value;
+
+        let request = await fetch("/movies", {
+
+            method: "POST",
+            credentials: "same-origin",
+            headers: {
+                "Content-Type":"application/json",
+            },
+            body: JSON.stringify({
+                title: inputTitle,
+                director: inputDirector,
+                year: 5,
+            }),
+            dataType: "json",
+        });
+        if (request.ok){
+            console.log(await request.json());
+        }
+    };
+</script>
+</html>
